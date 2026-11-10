@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --font-heading: "Plus Jakarta Sans", sans-serif;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: "Playfair Display", Georgia, serif;
+}
+
+:root {
+    color-scheme: light;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #1f2937;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar for sleek desktop feel */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Photo card aspect ratio utility and animation */
+.photo-card-hover {
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-card-hover:hover {
+    transform: translateY(-2px);
+}
+
+/* Layout & Navigation */
+.app-main-content {
+    @apply flex-1 overflow-y-auto min-h-0 p-4 sm:p-6 md:p-8 bg-slate-50/50;
+}
+
+.sidebar-container {
+    @apply fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-white border-r border-slate-200 p-4 flex flex-col sm:justify-between gap-6 select-none md:static md:w-64 md:h-full md:bg-slate-50/70 md:translate-x-0 transition-transform duration-200 ease-in-out shrink-0 overflow-y-auto;
+}
+
+.sidebar-mobile-open {
+    @apply translate-x-0 shadow-2xl md:shadow-none;
+}
+
+.sidebar-mobile-closed {
+    @apply -translate-x-full md:translate-x-0;
+}
+
+.sidebar-backdrop {
+    @apply fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-40 md:hidden transition-opacity duration-200;
+}
+
+.sidebar-mobile-header {
+    @apply flex md:hidden items-center justify-between pb-3 border-b border-slate-200/80;
+}
+
+.sidebar-close-btn {
+    @apply p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-full transition cursor-pointer;
+}
+
+.sidebar-action-btn {
+    @apply w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white hover:bg-slate-100 text-slate-800 rounded-full border border-slate-200 text-sm transition cursor-pointer;
+}
+
+.sidebar-nav-item {
+    @apply flex items-center gap-3.5 px-4 py-2.5 rounded-full text-sm transition-all;
+}
+
+.sidebar-nav-item-active {
+    @apply bg-red-50 text-red-600;
+}
+
+.sidebar-nav-item-inactive {
+    @apply text-slate-700 hover:bg-slate-200/60 hover:text-slate-900;
+}
+
+.sidebar-storage-card {
+    @apply bg-white rounded-2xl p-4 border border-slate-200/80 space-y-3;
+}
+
+.sidebar-storage-bar {
+    @apply h-full bg-linear-to-r from-red-500 to-orange-500 rounded-full transition-all duration-500;
+}
+
+/* Header & Navbar */
+.navbar-header {
+    @apply h-16 px-3 sm:px-6 border-b border-slate-200 bg-white sticky top-0 z-30 flex items-center justify-between gap-2 sm:gap-4 select-none;
+}
+
+.navbar-brand {
+    @apply flex items-center gap-2 sm:gap-3 shrink-0;
+}
+
+.navbar-brand-text {
+    @apply hidden sm:inline text-base sm:text-xl font-heading font-semibold text-slate-800 tracking-tight;
+}
+
+.navbar-menu-btn {
+    @apply md:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-full transition cursor-pointer shrink-0;
+}
+
+.navbar-search-wrapper {
+    @apply flex items-center bg-slate-100 focus-within:bg-red-50 transition-all rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-transparent focus-within:border-red-500;
+}
+
+.navbar-search-input {
+    @apply w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none;
+}
+
+.navbar-ai-badge {
+    @apply hidden lg:flex bg-linear-to-r from-slate-500 to-slate-700 bg-clip-text text-transparent shrink-0 items-center text-xs gap-2;
+}
+
+.navbar-upload-btn {
+    @apply flex items-center gap-1.5 sm:gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-medium px-3 py-2 sm:px-5 sm:py-2.5 rounded-full cursor-pointer;
+}
+
+.navbar-avatar-btn {
+    @apply size-8 sm:size-9 rounded-full bg-linear-to-br from-red-500 to-orange-500 text-white font-medium text-xs flex items-center justify-center hover:opacity-95 transition cursor-pointer shrink-0;
+}
+
+.navbar-dropdown {
+    @apply absolute right-0 mt-2 w-56 sm:w-64 bg-white rounded-2xl border border-slate-200 z-50 transition-all duration-150;
+}
+
+.navbar-logout-btn {
+    @apply w-full text-left px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 rounded-xl flex items-center gap-2 transition cursor-pointer;
+}
+
+/* Photo Cards */
+.photo-card-container {
+    @apply relative rounded-2xl overflow-hidden cursor-pointer select-none bg-slate-100 border transition-all border-slate-200/70 hover:border-red-300;
+}
+
+.photo-card-img {
+    @apply size-full object-cover transition-transform duration-300 group-hover:scale-105;
+}
+
+.photo-card-video-badge {
+    @apply absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1 px-2 py-0.5 bg-black/70 backdrop-blur-xs text-white rounded-full text-[10px] font-medium pointer-events-none group-hover:opacity-0 transition-opacity;
+}
+
+.photo-card-overlay {
+    @apply absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none;
+}
+
+.photo-card-select-btn {
+    @apply absolute top-2.5 left-2.5 size-6 rounded-full flex items-center justify-center transition-all cursor-pointer z-10;
+}
+
+.photo-card-select-active {
+    @apply bg-red-600 text-white scale-105;
+}
+
+.photo-card-select-inactive {
+    @apply bg-white/80 backdrop-blur-xs text-transparent group-hover:text-slate-400 group-hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100;
+}
+
+.photo-card-action-btn {
+    @apply p-1.5 rounded-full transition-all cursor-pointer bg-white/80 backdrop-blur-xs text-slate-600 hover:text-red-600 hover:bg-white opacity-0 group-hover:opacity-100;
+}
+
+.photo-card-favorite-active {
+    @apply p-1.5 rounded-full transition-all cursor-pointer bg-white text-amber-500 scale-100 opacity-100;
+}
+
+.photo-card-favorite-inactive {
+    @apply p-1.5 rounded-full transition-all cursor-pointer bg-white/80 backdrop-blur-xs text-slate-600 hover:text-amber-500 hover:bg-white opacity-0 group-hover:opacity-100;
+}
+
+.photo-card-title {
+    @apply absolute bottom-2 left-2 right-2 text-white text-xs font-medium truncate opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none;
+}
+
+/* Modals & Dialogs */
+.modal-backdrop {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-150;
+}
+
+.modal-box-md {
+    @apply bg-white rounded-2xl border border-slate-200 w-full max-w-md overflow-hidden;
+}
+
+.modal-box-lg {
+    @apply bg-white rounded-2xl border border-slate-200 w-full max-w-xl overflow-hidden flex flex-col max-h-[85vh];
+}
+
+.modal-box-xl {
+    @apply bg-white rounded-2xl border border-slate-200 w-full max-w-2xl overflow-hidden flex flex-col max-h-[85vh];
+}
+
+.modal-header {
+    @apply p-5 border-b border-slate-100 flex items-center justify-between;
+}
+
+.modal-footer {
+    @apply p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end;
+}
+
+.upload-dropzone {
+    @apply border rounded-xl p-8 py-16 flex flex-col items-center justify-center text-center cursor-pointer border-dashed transition-all;
+}
+
+.upload-dropzone-active {
+    @apply border-red-500 bg-red-50/60;
+}
+
+.upload-dropzone-idle {
+    @apply border-slate-200 hover:border-red-400 hover:bg-slate-50/60;
+}
+
+/* Forms & Buttons */
+.form-input {
+    @apply w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-red-500 transition;
+}
+
+.auth-input {
+    @apply w-full px-4 py-3 bg-[#f3f4f8] hover:bg-[#eef0f5] focus:bg-white border border-transparent focus:border-slate-300 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none transition;
+}
+
+.auth-btn-primary {
+    @apply w-full mt-2 py-3.5 bg-black hover:bg-neutral-800 disabled:opacity-50 text-white rounded-xl text-sm font-semibold transition cursor-pointer flex items-center justify-center gap-2;
+}
+
+.btn-primary {
+    @apply flex items-center gap-2 px-6 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white text-sm font-semibold rounded-full transition cursor-pointer;
+}
+
+.btn-secondary {
+    @apply px-4 py-2 text-sm text-slate-600 hover:bg-slate-200/60 rounded-full font-medium transition cursor-pointer;
+}
+
+/* Bulk Selection Bar */
+.bulk-bar-container {
+    @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-full px-5 py-3 flex items-center gap-4 text-slate-800 transition-all duration-200 select-none;
+}
+
+.bulk-bar-btn {
+    @apply flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-100 text-xs font-medium text-slate-700 transition cursor-pointer;
+}
+
+.bulk-bar-btn-trash {
+    @apply flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-rose-50 text-xs font-medium text-rose-600 transition cursor-pointer;
+}
+
+/* Lightbox */
+.lightbox-backdrop {
+    @apply fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col select-none transition-opacity duration-200;
+}
+
+.lightbox-toolbar {
+    @apply h-16 px-6 bg-linear-to-b from-black/60 to-transparent flex items-center justify-between text-white shrink-0 z-20;
+}
+
+.lightbox-btn {
+    @apply p-2.5 hover:bg-white/20 rounded-full transition cursor-pointer text-white;
+}
+
+.lightbox-nav-btn {
+    @apply p-3 bg-black/40 hover:bg-black/70 text-white rounded-full transition cursor-pointer z-10;
+}
+
+.lightbox-drawer {
+    @apply absolute right-0 top-0 bottom-0 w-80 bg-white text-slate-800 p-6 overflow-y-auto transition-transform duration-200 z-30;
+}
+
+/* Album & Empty State Cards */
+.album-card-create {
+    @apply aspect-4/3 rounded-2xl border border-slate-300 hover:border-red-300 bg-white/70 p-4 flex flex-col items-center justify-center cursor-pointer transition-all;
+}
+
+.album-card {
+    @apply aspect-4/3 relative rounded-2xl bg-white border border-slate-200/80 hover:border-red-300 transition-all duration-200 overflow-hidden cursor-pointer select-none flex flex-col;
+}
+
+.empty-state-card {
+    @apply text-center py-20 px-4 xl:mt-40 bg-white rounded-3xl border border-slate-200/80 max-w-lg mx-auto;
+}
