@@ -28,7 +28,8 @@ const Navbar = ({searchQuery,onSearchChange,onUploadClick,onToggleSidebar}) => {
     <header className='navbar-header'>
         {/* Left brand & mobile hamburger  */}
         <div className='navbar-brand'>
-            <button className='navbar-menu-btn' title='Toggle menu' aria-label="Toggle navigation menu">
+            <button className='navbar-menu-btn' title='Toggle menu' aria-label="Toggle navigation menu"
+            onClick={onToggleSidebar}>
                 <MenuIcon className='size-5'/>
             </button>
             <img src="logo.png" alt="Logo" className='size-8' />
