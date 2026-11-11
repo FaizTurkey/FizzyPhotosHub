@@ -69,15 +69,16 @@ export const PhotoLightbox = ({ photos, currentPhoto, onClose, onToggleFavorite,
                     <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition cursor-pointer text-white" title="Close (Esc)">
                         <X className="size-5" />
                     </button>
-                    <div>
-                        <h3 className="text-sm font-semibold truncate max-w-sm">{activePhoto.title}</h3>
+                    <div className="min-w-0">
+                        <h3 className="text-sm font-semibold truncate max-w-35 sm:max-w-50
+                         md:max-w-sm">{activePhoto.title}</h3>
                         <p className="text-[11px] text-white/70">
                             {currentIndex + 1} of {photos.length}
                         </p>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                     <button onClick={() => onToggleFavorite(activePhoto._id)} className={`lightbox-btn ${activePhoto.isFavorite ? "bg-amber-400 text-slate-900" : ""}`} title="Favorite">
                         <StarIcon className={`size-5 ${activePhoto.isFavorite ? "fill-slate-900" : ""}`} />
                     </button>
