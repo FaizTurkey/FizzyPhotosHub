@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { X, ChevronLeftIcon, ChevronRightIcon, StarIcon, InfoIcon, Download, Trash2, FolderPlus, Calendar, HardDrive, Maximize2, Film, SparkleIcon } from "lucide-react";
-import {Video} from '@imagekit/react'
+import { Video } from '@imagekit/react'
 
 const urlEndpoint = import.meta.env.VITE_IMAGEKIT_URL_ENDPOINT;
 
@@ -65,11 +65,11 @@ export const PhotoLightbox = ({ photos, currentPhoto, onClose, onToggleFavorite,
         <div className="lightbox-backdrop">
             {/* Top Toolbar */}
             <div className="lightbox-toolbar">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center  gap-4">
                     <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition cursor-pointer text-white" title="Close (Esc)">
                         <X className="size-5" />
                     </button>
-                    <div className="min-w-0">
+                    <div className=" flex-1 min-w-0">
                         <h3 className="text-sm font-semibold truncate max-w-35 sm:max-w-50
                          md:max-w-sm">{activePhoto.title}</h3>
                         <p className="text-[11px] text-white/70">
@@ -97,7 +97,7 @@ export const PhotoLightbox = ({ photos, currentPhoto, onClose, onToggleFavorite,
                         <InfoIcon className="size-5" />
                     </button>
 
-                    <button
+                    <button 
                         onClick={() => {
                             onTrashPhoto(activePhoto._id);
                             if (photos.length > 1) {
@@ -106,7 +106,7 @@ export const PhotoLightbox = ({ photos, currentPhoto, onClose, onToggleFavorite,
                                 onClose();
                             }
                         }}
-                        className="lightbox-btn hover:bg-rose-500/80!"
+                        className="lightbox-btn shrink-0 hover:bg-rose-500/80!"
                         title="Move to trash"
                     >
                         <Trash2 className="size-5" />

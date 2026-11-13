@@ -273,7 +273,7 @@ body {
 }
 
 .lightbox-btn {
-    @apply p-2.5 hover:bg-white/20 rounded-full transition cursor-pointer text-white;
+    @apply p-2.5 hover:bg-white/20 rounded-full transition cursor-pointer text-white mr-[-14px];
 }
 
 .lightbox-nav-btn {
